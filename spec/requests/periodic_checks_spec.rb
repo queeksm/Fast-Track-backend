@@ -65,7 +65,7 @@ RSpec.describe 'periodic_check API' do
 
   # Test suite for POST /car/:car_id/periodic_check
   describe 'POST /car/:car_id/periodic_check' do
-    let(:valid_attributes) { { mileage: 12000, gasPerformance: 12.5, passed: true, maintenance: Time.now }.to_json }
+    let(:valid_attributes) { { mileage: 12000, gasPerformance: 12.5, passed: 'true', maintenance: Time.now }.to_json }
 
     context 'when request attributes are valid' do
       before { post "/checks/create/#{car_id}", params: valid_attributes, headers: headers }
