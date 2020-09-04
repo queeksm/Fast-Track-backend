@@ -9,8 +9,13 @@ class CarController < ApplicationController
 
   # POST /cars
   def create
-    @car = current_user.cars.create!(car_params)
-    json_response(@car, :created)
+    if current_user.role == 'Admin'
+      @car = current_user.cars.create!(car_params)
+      json_response(@car, :created)
+    else
+      response = { message: Message.insufficient_privileges }
+      json_response(response)
+    end
   end
 
   # GET /cars/:id
@@ -20,14 +25,24 @@ class CarController < ApplicationController
 
   # PUT /cars/:id
   def update
-    @car.update(car_params)
-    head :no_content
+    if current_user.role == 'Admin'
+      @car.update(car_params)
+      head :no_content
+    else
+      response = { message: Message.insufficient_privileges }
+      json_response(response)
+    end
   end
 
   # DELETE /cars/:id
   def destroy
-    @car.destroy
-    head :no_content
+    if current_user.role == 'Admin'
+      @car.destroy
+      head :no_content
+    else
+      response = { message: Message.insufficient_privileges }
+      json_response(response)
+    end
   end
 
   private

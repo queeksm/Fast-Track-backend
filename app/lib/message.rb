@@ -7,6 +7,10 @@ class Message
     'Invalid credentials'
   end
 
+  def self.insufficient_privileges
+    'Insufficient privileges'
+  end
+
   def self.invalid_token
     'Invalid token'
   end

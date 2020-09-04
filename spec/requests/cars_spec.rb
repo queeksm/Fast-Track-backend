@@ -59,7 +59,7 @@ RSpec.describe 'Car API', type: :request do
     end
 
     context 'when the request is valid' do
-      before { post '/car', params: valid_attributes, headers: headers }
+      before { post '/car/create', params: valid_attributes, headers: headers }
 
       it 'creates a car' do
         expect(json['owner']).to eq('Elmo')
@@ -72,7 +72,7 @@ RSpec.describe 'Car API', type: :request do
 
     context 'when the request is invalid' do
       let(:invalid_attributes) { {owner: nil}.to_json }
-      before { post '/car', params: invalid_attributes, headers: headers }
+      before { post '/car/create', params: invalid_attributes, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -90,7 +90,7 @@ RSpec.describe 'Car API', type: :request do
     let(:valid_attributes) { { owner: 'Zarathustra' }.to_json }
 
     context 'when the record exists' do
-      before { put "/car/#{car_id}", params: valid_attributes, headers: headers }
+      before { put "/car/update/#{car_id}", params: valid_attributes, headers: headers }
 
       it 'updates the record' do
         expect(response.body).to be_empty
@@ -104,7 +104,7 @@ RSpec.describe 'Car API', type: :request do
 
   # Test suite for DELETE /cars/:id
   describe 'DELETE /car/:id' do
-    before { delete "/car/#{car_id}", params: {}, headers: headers }
+    before { delete "/car/destroy/#{car_id}", params: {}, headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

@@ -63,12 +63,12 @@ RSpec.describe 'periodic_check API' do
     end
   end
 
-  # Test suite for PUT /car/:car_id/periodic_check
+  # Test suite for POST /car/:car_id/periodic_check
   describe 'POST /car/:car_id/periodic_check' do
     let(:valid_attributes) { { mileage: 12000, gasPerformance: 12.5, passed: true, maintenance: Time.now }.to_json }
 
     context 'when request attributes are valid' do
-      before { post "/car/#{car_id}/periodic_check", params: valid_attributes, headers: headers }
+      before { post "/checks/create/#{car_id}", params: valid_attributes, headers: headers }
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
@@ -76,7 +76,7 @@ RSpec.describe 'periodic_check API' do
     end
 
     context 'when an invalid request' do
-      before { post "/car/#{car_id}/periodic_check", params: {}, headers: headers }
+      before { post "/checks/create/#{car_id}", params: {}, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -92,7 +92,7 @@ RSpec.describe 'periodic_check API' do
   describe 'PUT /car/:car_id/periodic_check/:id' do
     let(:valid_attributes) { { mileage: 15000 }.to_json }
 
-    before { put "/car/#{car_id}/periodic_check/#{id}", params: valid_attributes, headers: headers }
+    before { put "/checks/update/#{car_id}/#{id}", params: valid_attributes, headers: headers }
 
     context 'when periodic_check exists' do
       it 'returns status code 204' do
@@ -116,7 +116,7 @@ RSpec.describe 'periodic_check API' do
 
   # Test suite for DELETE /car/:id
   describe 'DELETE /car/:id' do
-    before { delete "/car/#{car_id}/periodic_check/#{id}", params: {}, headers: headers }
+    before { delete "/checks/destroy/#{car_id}/#{id}", params: {}, headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
