@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :periodic_check, only: [:show, :index]
   end
 
+  root to: 'authentication#authenticate'
+
   post 'auth/login', to: 'authentication#authenticate'
   post 'signup', to: 'users#create'
   post 'car/create', to: 'car#create'
