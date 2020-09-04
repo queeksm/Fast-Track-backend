@@ -3,13 +3,13 @@ class CarController < ApplicationController
 
   # GET /cars
   def index
-    @car = Car.all
+    @car = current_user.cars
     json_response(@car)
   end
 
   # POST /cars
   def create
-    @car = Car.create!(car_params)
+    @car = current_user.cars.create!(car_params)
     json_response(@car, :created)
   end
 
