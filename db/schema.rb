@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_192832) do
+ActiveRecord::Schema.define(version: 2020_09_04_223137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cars", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "owner"
     t.string "carModel"
     t.string "manufacturer"
@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 2020_09_03_192832) do
   create_table "periodic_checks", force: :cascade do |t|
     t.float "mileage"
     t.float "gasPerformance"
-    t.boolean "passed"
+    t.string "passed"
     t.date "maintenance"
-    t.integer "car_id"
+    t.bigint "car_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["car_id"], name: "index_periodic_checks_on_car_id"
@@ -45,4 +45,6 @@ ActiveRecord::Schema.define(version: 2020_09_03_192832) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "cars", "users"
+  add_foreign_key "periodic_checks", "cars"
 end
