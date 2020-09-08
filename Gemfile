@@ -37,10 +37,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'factory_bot_rails', '~> 6.1'
-  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
-  gem 'faker', '~> 2.13'
   gem 'database_cleaner', '~> 1.8', '>= 1.8.5'
+  gem 'factory_bot_rails', '~> 6.1'
+  gem 'faker', '~> 2.13'
+  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
 end
 
 group :development do
