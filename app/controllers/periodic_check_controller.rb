@@ -41,6 +41,6 @@ class PeriodicCheckController < ApplicationController
   end
 
   def set_car_periodic_check
-    @periodic_check = @car.periodic_checks.find_by!(params[:id]) if @car
+    @periodic_check = @car.periodic_checks.find_by!(id: params[:id]) if @car
   end
 end

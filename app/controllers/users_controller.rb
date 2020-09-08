@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       :email,
       :password,
       :password_confirmation,
-      :role
+      :admin
     )
   end
 end
