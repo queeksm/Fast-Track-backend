@@ -6,7 +6,7 @@ ruby '2.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -30,17 +30,17 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
   gem 'bcrypt', '~> 3.1', '>= 3.1.15'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'jwt', '~> 2.2', '>= 2.2.2'
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
 end
 
 group :test do
-  gem 'factory_bot_rails', '~> 6.1'
-  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
-  gem 'faker', '~> 2.13'
   gem 'database_cleaner', '~> 1.8', '>= 1.8.5'
+  gem 'factory_bot_rails', '~> 6.1'
+  gem 'faker', '~> 2.13'
+  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
 end
 
 group :development do
