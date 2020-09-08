@@ -3,6 +3,6 @@ FactoryBot.define do
     username { Faker::Name.first_name }
     email {'foo@bar.com'}
     password {'foobar'}
-    role { 'Admin' }
+    admin { true }
   end
 end
