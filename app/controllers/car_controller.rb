@@ -9,12 +9,11 @@ class CarController < ApplicationController
 
   # POST /cars
   def create
-    if current_user.role == 'Admin'
+    if current_user.admin
       @car = current_user.cars.create!(car_params)
       json_response(@car, :created)
     else
-      response = { message: Message.insufficient_privileges }
-      json_response(response)
+      insufficient_response
     end
   end
 
@@ -25,27 +24,30 @@ class CarController < ApplicationController
 
   # PUT /cars/:id
   def update
-    if current_user.role == 'Admin'
+    if current_user.admin
       @car.update(car_params)
       head :no_content
     else
-      response = { message: Message.insufficient_privileges }
-      json_response(response)
+      insufficient_response
     end
   end
 
   # DELETE /cars/:id
   def destroy
-    if current_user.role == 'Admin'
+    if current_user.admin
       @car.destroy
       head :no_content
     else
-      response = { message: Message.insufficient_privileges }
-      json_response(response)
+      insufficient_response
     end
   end
 
   private
+
+  def insufficient_response
+    response = { message: Message.insufficient_privileges }
+      json_response(response)
+  end
 
   def car_params
     # whitelist params

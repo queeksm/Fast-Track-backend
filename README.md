@@ -72,6 +72,15 @@
 
 > Deletes the checkup pointed by the ID. Accesible to all roles.
 
+## Installation.
+
+- Clone the repository from github.
+- Run the following commands:
+- bundler install (this will install all the gem dependencies on the gemfile.)
+- rails db:migrate (this will generate the migrations necesary for the database.)
+- Now you can start the server locally with rails s, or you can acces the live version.
+- The app only shows JSON data so you'll need an external sevice like postman to check all the features.
+
 ## Built With
 
 - Ruby
