@@ -1,6 +1,6 @@
 class JsonWebToken
   # secret to encode and decode token
-  HMAC_SECRET = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1OTkzNDUyMjd9.LTFCMMJZWmuw9PpFvD6BjyM_2r-pZhihh2neKqNmacY'
+  HMAC_SECRET = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1OTkzNDUyMjd9.LTFCMMJZWmuw9PpFvD6BjyM_2r'.freeze
 
   def self.encode(payload, exp = 24.hours.from_now)
     # set expiry to 24 hours from creation time

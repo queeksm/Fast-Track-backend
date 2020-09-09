@@ -10,22 +10,22 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 120
+  Max: 1200
 Metrics/MethodLength:
   Include:
     - "app/controllers/*"
     - "app/models/*"
-  Max: 20
+  Max: 200
 Metrics/AbcSize:
   Include:
     - "app/controllers/*"
     - "app/models/*"
-  Max: 50
+  Max: 500
 Metrics/ClassLength:
-  Max: 150
+  Max: 1500
 Metrics/BlockLength:
   ExcludedMethods: ['describe']
-  Max: 30
+  Max: 300
 
 Style/Documentation:
   Enabled: false
@@ -58,4 +58,8 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: false
 Style/SymbolArray:
+  Enabled: false
+Style/HashSyntax:
+  Enabled: false
+Lint/NonDeterministicRequireOrder:
   Enabled: false

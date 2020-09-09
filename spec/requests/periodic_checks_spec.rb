@@ -65,7 +65,7 @@ RSpec.describe 'periodic_check API' do
 
   # Test suite for POST /car/:car_id/periodic_check
   describe 'POST /car/:car_id/periodic_check' do
-    let(:valid_attributes) { { mileage: 12000, gasPerformance: 12.5, passed: 'true', maintenance: Time.now }.to_json }
+    let(:valid_attributes) { { mileage: 12_000, gasPerformance: 12.5, passed: 'true', maintenance: Time.now }.to_json }
 
     context 'when request attributes are valid' do
       before { post "/checks/create/#{car_id}", params: valid_attributes, headers: headers }
@@ -90,7 +90,7 @@ RSpec.describe 'periodic_check API' do
 
   # Test suite for PUT /car/:car_id/periodic_check/:id
   describe 'PUT /car/:car_id/periodic_check/:id' do
-    let(:valid_attributes) { { mileage: 15000 }.to_json }
+    let(:valid_attributes) { { mileage: 15_000 }.to_json }
 
     before { put "/checks/update/#{car_id}/#{id}", params: valid_attributes, headers: headers }
 
@@ -98,7 +98,6 @@ RSpec.describe 'periodic_check API' do
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
       end
-
     end
 
     context 'when the periodic_check does not exist' do

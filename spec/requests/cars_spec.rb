@@ -54,8 +54,8 @@ RSpec.describe 'Car API', type: :request do
   # Test suite for POST /cars
   describe 'POST /car' do
     # valid payload
-    let(:valid_attributes) do 
-       { owner: 'Elmo', carModel: 'cookie', manufacturer: 'Toyota' }.to_json
+    let(:valid_attributes) do
+      { owner: 'Elmo', carModel: 'cookie', manufacturer: 'Toyota' }.to_json
     end
 
     context 'when the request is valid' do
@@ -71,7 +71,7 @@ RSpec.describe 'Car API', type: :request do
     end
 
     context 'when the request is invalid' do
-      let(:invalid_attributes) { {owner: nil}.to_json }
+      let(:invalid_attributes) { { owner: nil }.to_json }
       before { post '/car/create', params: invalid_attributes, headers: headers }
 
       it 'returns status code 422' do

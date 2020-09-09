@@ -46,7 +46,7 @@ class CarController < ApplicationController
 
   def insufficient_response
     response = { message: Message.insufficient_privileges }
-      json_response(response)
+    json_response(response)
   end
 
   def car_params
