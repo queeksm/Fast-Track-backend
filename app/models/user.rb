@@ -5,6 +5,6 @@ class User < ApplicationRecord
 
   validates_presence_of :username, :email, :password_digest
   validates_inclusion_of :admin, in: [true, false]
-  validates :email , :username, uniqueness: true
+  validates :email, :username, uniqueness: true
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 end

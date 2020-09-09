@@ -63,3 +63,5 @@ Style/HashSyntax:
   Enabled: false
 Lint/NonDeterministicRequireOrder:
   Enabled: false
+Naming/MethodParameterName:
+  Enabled: false
